@@ -1,9 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# Change this line in main.py
-from app.routers import expenses  # absolute import
-from app import models  # Or the appropriate path to your models
-from .database import engine
+from app.routers import expenses
+from app import models
+from app.database import engine
 
 models.Base.metadata.create_all(bind=engine)
 
