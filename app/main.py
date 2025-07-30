@@ -4,7 +4,8 @@ from app.routers import expenses
 from app import models
 from app.database import engine
 
-models.Base.metadata.create_all(bind=engine)
+# Don't create tables on startup - use Alembic migrations instead
+# models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Expense Tracker API",

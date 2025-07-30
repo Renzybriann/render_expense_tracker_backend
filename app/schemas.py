@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import date
 from typing import Optional
 
@@ -13,11 +13,9 @@ class ExpenseCreate(ExpenseBase):
     pass
 
 class Expense(ExpenseBase):
-    id: int
+    model_config = ConfigDict(from_attributes=True)
     
-    class Config:
-        orm_mode = True
-        from_attributes = True
+    id: int
 
 class ExpenseStatistics(BaseModel):
     total_expenses: float
